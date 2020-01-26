@@ -1,5 +1,6 @@
 require_relative 'board.rb'
 require_relative 'human_player.rb'
+require_relative 'computer_player.rb'
 
 class Game
 
@@ -20,7 +21,7 @@ class Game
     def play
         while @board.empty_positions?
             @board.print
-            pos = @currentPlayer.get_position
+            pos = @currentPlayer.get_position(@board.legal_positions)
             @board.place_mark(pos, @currentPlayer.mark)
             if @board.win?(@currentPlayer.mark)
                 @board.print
