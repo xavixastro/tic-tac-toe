@@ -19,7 +19,7 @@ class Board
             row, col = position
             @grid[row][col] = mark
         else
-            raise "Invalid position"
+            raise "Invalid mark"
         end
     end
 
