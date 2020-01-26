@@ -50,4 +50,14 @@ class Board
         @grid.any?{|row| row.any?{|el| el == "_"}}
     end
 
+    def legal_positions
+        positions = []
+        @grid.each_with_index do |row, idx1|
+            row.each_with_index do |el, idx2|
+                positions << [idx1, idx2] if el == "_"
+            end
+        end
+        positions
+    end
+
 end

@@ -3,9 +3,11 @@ require_relative 'human_player.rb'
 
 class Game
 
-    def initialize(size, *marks)
+    def initialize(size, hash)
         @players = []
-        marks.each {|mark| @players << HumanPlayer.new(mark)}
+        hash.each do |k, v| 
+            v ? @players << ComputerPlayer.new(k) : HumanPlayer.new(k)    
+        end
         @board = Board.new(size)
         @currentPlayer = @players.first      
     end

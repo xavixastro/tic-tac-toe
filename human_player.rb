@@ -6,14 +6,17 @@ class HumanPlayer
         @mark = mark
     end
 
-    def get_position()
+    def get_position(legal_positions)
         puts "Player #{self.mark}, enter two numbers representing a position in the format `row col`"
-        pos = gets.chomp.split(" ")
-        if pos.length != 2 || ("a".."z").include?(pos[0]) || ("a".."z").include?(pos[0])
-            raise "Invalid position"
-        else
-            return pos.map(&:to_i)
+        pos = gets.chomp.split(" ").map(&:to_i)
+        
+        while !legal_positions.include?(pos)
+            puts "Invalid position"
+            puts "Player #{self.mark}, enter two numbers representing a position in the format `row col`"
+            pos = gets.chomp.split(" ").map(&:to_i)
         end
+        
+        pos
     end
 
 end
